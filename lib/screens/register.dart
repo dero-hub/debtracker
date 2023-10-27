@@ -1,24 +1,24 @@
 import 'package:debttracker/Components/myButton.dart';
 import 'package:debttracker/Components/textfield.dart';
-import 'package:debttracker/screens/register.dart';
+import 'package:debttracker/screens/login.dart';
 import 'package:flutter/material.dart';
 
-class LoginPage extends StatelessWidget {
+class RegisterPage extends StatelessWidget {
   TextEditingController emailController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
 
-  LoginPage({super.key});
+  RegisterPage({super.key});
 
   //  login method
-  void login() {
-    print("hey");
+  void signup() {
+    print("We'll create an account for you shortly");
   }
 
-    navigateToRegister(BuildContext context) {
-   return Navigator.push(
-    context,
-    MaterialPageRoute(builder: (context) => RegisterPage()),
-  );
+  navigateToLogin(context) {
+  //  Navigator.push(
+  //   context,
+  //   MaterialPageRoute(builder: (context) => LoginPage()),
+  // );
   }
 
   @override
@@ -45,13 +45,13 @@ class LoginPage extends StatelessWidget {
               "D E B T R A C K E R",
               style: TextStyle(fontSize: 20),
             ),
-            //email field
+            //firstname field
             const SizedBox(
               height: 25,
             ),
 
             MyTextField(
-                hintText: "doe@example.com",
+                hintText: "firstname",
                 obscureText: false,
                 controller: emailController),
 
@@ -59,44 +59,39 @@ class LoginPage extends StatelessWidget {
               height: 10,
             ),
 
-            //password field
+            //lastname field
             MyTextField(
-                hintText: "password",
+                hintText: "lastname",
                 obscureText: true,
                 controller: passwordController),
 
             const SizedBox(
               height: 10,
             ),
-            //forgot password
-            const Row(
-              mainAxisAlignment: MainAxisAlignment.end,
-              children: [Text("forgot password?", style: TextStyle(
-                color: Colors.grey
-              ),)],
-            ),
+            //
+
             const SizedBox(
               height: 15,
             ),
 
             //signin button
-            MyButton(text: "Signin", onTap: login),
+            MyButton(text: "Signup", onTap: signup),
 
-             const SizedBox(
+            const SizedBox(
               height: 10,
             ),
             //don't have an account? create one
             Row(
               children: [
-                const Text("don't have an account?"),
-                 GestureDetector(
-                  onLongPress: () => navigateToRegister(context),
-                  child: const Text("register here", 
-                style: 
-                TextStyle(
-                  fontWeight: FontWeight.bold
-                ),),
+                const Text("Already have an account? Click"),
+                GestureDetector(
+                  onTap: navigateToLogin(context),
+                  child: const Text(
+                    "here",
+                    style: TextStyle(fontWeight: FontWeight.bold),
+                  ),
                 ),
+                const Text("to Login"),
               ],
             )
           ],
